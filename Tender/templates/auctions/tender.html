@@ -1,0 +1,118 @@
+{% extends '../main.html' %}
+
+{% load static %}
+
+{% block site_title %}{{ site_title }}{% endblock %}
+
+{% block header_title %}{{ header_title }}{% endblock %}
+
+{% block list_menu %}
+    {% for item in menu %}
+        {% if item == 'Полный перечень' %}
+            <a href="{% url 'aucs' %}" class="menu__link">{{ item }}</a>
+        {% else %}
+            <a href="#" class="menu__link">{{ item }}</a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block main_header %}
+    <div class="main__header" style="overflow-y:hidden; height:155px;">
+        <form class="form" action="{% url 'aucs' %}" method="get">
+            <div class="form__row">
+                <div class="form__group">
+                    <input name="num_auc" type="text" class="select form__select" placeholder="Номер аукциона...">
+                </div>
+                <div class="form__group">
+                    <select name="user" class="select form__select">
+                        <option value="all">Все пользователи</option>
+                        {% for user in users %}
+                            <option value="{{ user }}">{{ user }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form__group">
+                    <select name="region" class="select form__select">
+                        <option value="all">Все регионы</option>
+                        {% for region in regions %}
+                            <option value="{{ region }}">{{ region }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form__group">
+                    <input name="search" type="submit" class="button form__button" value="Поиск">
+                </div>
+            </div>
+        </form>
+        <div class="table__block-header">
+            <div class="block_______id">ID</div>
+            <div class="block__numprog">Программный номер</div>
+            <div class="block_____name">Пользователь</div>
+            <div class="block______num">Номер</div>
+            <div class="block______sum">Сумма</div>
+            <div class="block__dateadd">Дата добавления</div>
+            <div class="block__datesub">Дата подачи</div>
+            <div class="block__datetrd">Дата торгов</div>
+            <div class="block_____area">Площадка</div>
+            <div class="block___code1c">Код в 1С</div>
+            <div class="block_operator">Оператор</div>
+            <div class="block___region">Регион</div>
+            <div class="block___prepar">Подготовка</div>
+            <div class="block___result">Результат</div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% if auctions %}
+        {% for item in auctions %}
+            <div class="table__block-row">
+                <div class="block_______id">
+                    <a class="table__link" href="#">
+                        <img src="{% static 'img/add.png' %}" height="15" alt="добавить">
+                    </a>
+                    <a class="table__link" href="{% url 'auc-info' item.id %}" target="_blank">
+                        <img src="{% static 'img/edit.png' %}" height="15" alt="редактировать">
+                    </a>
+                    <a class="table__link" href="{% url 'auc-delete' item.id %}">
+                        <img src="{% static 'img/del.png' %}" height="15" alt="удалить">
+                    </a>
+                    [ ID: {{ item.id }} ]
+                </div>
+                <div class="block__numprog">00000{{ forloop.counter }}</div>
+                <div class="block_____name">{{ item.userAddFK }}</div>
+                <div class="block______num">{{ item.numT }}</div>
+                <div class="block______sum">{{ item.startsSumT }}</div>
+                <div class="block__dateadd">{{ item.dateAddT }}</div>
+                <div class="block__datesub">{{ item.dateActionT }}</div>
+                <div class="block__datetrd">{{ item.dateDocT }}</div>
+                <div class="block_____area">Площадка</div>
+                <div class="block___code1c">Код 1С</div>
+                <div class="block_operator">Оператор</div>
+                <div class="block___region">{{ item.regionFK }}</div>
+                <div class="block___prepar">Подготовка</div>
+                <div class="block___result">Результат</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="table__block-row">Нет данных</div>
+    {% endif %}
+    <style>
+        .table__link {
+            text-transform: uppercase;
+            margin-right: 5px;
+            text-decoration: none;
+            -webkit-transition: all 0.5s ease 0s;
+            transition: all 0.5s ease 0s;
+        }
+
+        .table__link:hover {
+            color: #307672; /* check */
+            -webkit-transition: all 0.5s ease 0s;
+            transition: all 0.5s ease 0s;
+        }
+    </style>
+{% endblock %}
+
+{% block static_script_jq %}
+{% endblock %}

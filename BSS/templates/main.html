@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block site_title %}БСС.TENDER | ИНФО{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}" type="text/css">
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="adv">
+            <div class="container">
+                <div class="adv-wrap">
+                    <div class="logo logo__img">
+                        <h1>БСС.<ins class="tender__title">{% block header_title %}TENDER{% endblock %}</ins></h1>
+                    </div>
+                    <div class="banner banner__img">
+                        {% block head_button %}
+                            <div class="form__group">
+                                <input name="login" type="submit" class="form__button" value="Войти">
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="section menu">
+            <div class="container">
+                <div class="menu-wrap">
+                    <div class="menu-nav">
+                        <a href="{% url 'tender' %}" class="menu__link">Информация</a>
+                        <a href="{% url 'aucs'   %}" class="menu__link">Аукционы</a>
+                        <a href="{% url 'trade'  %}" class="menu__link">Торги</a>
+                        <a href="#" class="menu__link">Обеспечение заявки</a>
+                        <a href="#" class="menu__link">Обеспечение заявки (ФД)</a>
+                        <a href="#" class="menu__link">Обеспечение контракта</a>
+                        <a href="#" class="menu__link">Контракты</a>
+                        <a href="{% url 'admin:index' %}" class="menu__link" target="_blank">Админка</a>
+                    </div>
+                </div>
+                <div class="menu-wrap">
+                    <div class="menu-nav">
+                        {% block list_menu %}
+                            <a href="#" class="menu__link">Информация о бсс</a>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <!--<div class="navbar">
+        <section class="section menu">
+            <div class="container">
+                <div class="menu-wrap">
+                    <div class="menu-nav">
+                        <a href="#" class="menu__link">Информация о бсс</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>-->
+
+    <!--<div class="main__header">-->
+    {% block main_header %}
+    {% endblock %}
+    <!--/div>-->
+
+    <div class="main__content">
+        {% block content %}
+            <h3>Тендер — это торги, в которых заказчик объявляет,
+            что ему нужно выполнить определенную работу в пределах
+            определенной суммы, а исполнители соревнуются за то,
+            чтобы получить этот заказ. Торги в Российской Федерации
+            подразделяются на открытые и закрытые, могут проводиться
+            в один или два этапа, в форме конкурса или аукциона.
+            Торги, осуществляемые для государственных нужд в рамках
+            государственного заказа, проводятся только в один этап.</h3>
+            <h3>Тендер — это торги, в которых заказчик объявляет,
+            что ему нужно выполнить определенную работу в пределах
+            определенной суммы, а исполнители соревнуются за то,
+            чтобы получить этот заказ. Торги в Российской Федерации
+            подразделяются на открытые и закрытые, могут проводиться
+            в один или два этапа, в форме конкурса или аукциона.
+            Торги, осуществляемые для государственных нужд в рамках
+            государственного заказа, проводятся только в один этап.</h3>
+            <h3>Тендер — это торги, в которых заказчик объявляет,
+            что ему нужно выполнить определенную работу в пределах
+            определенной суммы, а исполнители соревнуются за то,
+            чтобы получить этот заказ. Торги в Российской Федерации
+            подразделяются на открытые и закрытые, могут проводиться
+            в один или два этапа, в форме конкурса или аукциона.
+            Торги, осуществляемые для государственных нужд в рамках
+            государственного заказа, проводятся только в один этап.</h3>
+            <h3>Тендер — это торги, в которых заказчик объявляет,
+            что ему нужно выполнить определенную работу в пределах
+            определенной суммы, а исполнители соревнуются за то,
+            чтобы получить этот заказ. Торги в Российской Федерации
+            подразделяются на открытые и закрытые, могут проводиться
+            в один или два этапа, в форме конкурса или аукциона.
+            Торги, осуществляемые для государственных нужд в рамках
+            государственного заказа, проводятся только в один этап.</h3>
+            <h3>Тендер — это торги, в которых заказчик объявляет,
+            что ему нужно выполнить определенную работу в пределах
+            определенной суммы, а исполнители соревнуются за то,
+            чтобы получить этот заказ. Торги в Российской Федерации
+            подразделяются на открытые и закрытые, могут проводиться
+            в один или два этапа, в форме конкурса или аукциона.
+            Торги, осуществляемые для государственных нужд в рамках
+            государственного заказа, проводятся только в один этап.</h3>
+            <h3>Тендер — это торги, в которых заказчик объявляет,
+            что ему нужно выполнить определенную работу в пределах
+            определенной суммы, а исполнители соревнуются за то,
+            чтобы получить этот заказ. Торги в Российской Федерации
+            подразделяются на открытые и закрытые, могут проводиться
+            в один или два этапа, в форме конкурса или аукциона.
+            Торги, осуществляемые для государственных нужд в рамках
+            государственного заказа, проводятся только в один этап.</h3>
+        {% endblock %}
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrap">
+                <div class="footer-nav">
+                    <a href="#" class="menu__link">О проекте</a>
+                    <a href="{% url 'tender' %}" class="menu__link">Информация</a>
+                    <a href="#" class="menu__link">Реклама на сайте</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        {% block static_script_jq %}
+        {% endblock %}
+
+        function windowBlockSizes() {
+            var clientW = $(window).width();
+            var clientH = $(window).height();
+
+            var headerH = $(".header").height();
+            var footerH = $(".footer").height();
+            var headerMainH = $(".main__header").height();
+            if (headerMainH == undefined) {
+                headerMainH = 0;
+            }
+
+            $('.header').css('width', clientW);
+            $('.footer').css('width', clientW);
+            $('.main__header').css('width', clientW);
+            $('.main__content').css('width', clientW);
+
+            $('.main__content').css('height', clientH - headerH - headerMainH - footerH);
+        }
+
+        setInterval(function() {
+            windowBlockSizes();
+        }, 100);
+    </script>
+</body>
+</html>

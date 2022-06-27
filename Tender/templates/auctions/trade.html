@@ -1,0 +1,15 @@
+{% extends '../main.html' %}
+
+{% block site_title %}{{ site_title }}{% endblock %}
+
+{% block header_title %}{{ header_title }}{% endblock %}
+
+{% block list_menu %}
+    {% for item in menu %}
+        <a href="#" class="menu__link">{{ item }}</a>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <h1>Торги</h1>
+{%  endblock %}

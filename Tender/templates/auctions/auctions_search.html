@@ -1,0 +1,21 @@
+{% extends 'auctions/tender.html' %}
+
+{% block main_list_search %}
+    {% for item in aucs %}
+        <tr class="main__list-info">
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">{{item.id}}</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">Подготовка</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">{{item.userAddFK}}</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">{{item.startsSumT}}</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">{{item.dateAddT}}</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">{{item.dateActionT}}</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">{{item.dateDocT}}</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">{{item.numT}}</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">Площадка</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">Код 1С</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">{{item.regionFK}}</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">Результат</a></td>
+            <td><a href="{% url 'auc-info' item.id %}" class="main__list-link" target="_blank">Оператор</a></td>
+        </tr>
+    {% endfor %}
+{% endblock %}

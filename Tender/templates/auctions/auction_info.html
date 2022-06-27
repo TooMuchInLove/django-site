@@ -1,0 +1,88 @@
+{% extends '../main.html' %}
+
+{% block site_title %}{{ site_title }}{% endblock %}
+
+{% block header_title %}{{ header_title }}{% endblock %}
+
+{% block list_menu %}
+    {% for item in menu %}
+        <a href="#" class="menu__link">{{ item }}</a>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <form class="form" method="post">
+        {% csrf_token %}
+        <div class="form__group">
+            <div class="form__row">
+                <input id="check__0" type="checkbox" checked>
+                <label class="form__select">Идентификатор: {{ auction.id }}</label>
+            </div>
+        </div>
+        <div class="form__group">
+            <div class="form__row">
+                <label class="form__select">Пользователь</label>
+            </div>
+            <div class="form__row">{{ form.userAddFK }}</div>
+        </div>
+        <div class="form__group">
+            <div class="form__row">
+                <label class="form__select">Стартовая сумма</label>
+            </div>
+            <div class="form__row">{{ form.startsSumT }}</div>
+        </div>
+        <div class="form__group">
+            <div class="form__row">
+                <label class="form__select">Дата добавления</label>
+                <label class="form__select">Дата подачи</label>
+                <label class="form__select">Дата документа</label>
+            </div>
+            <div class="form__row">
+                {{ form.dateAddT }}
+                {{ form.dateActionT }}
+                {{ form.dateDocT }}
+            </div>
+        </div>
+        <div class="form__group">
+            <div class="form__row">
+                <label class="form__select">Номер</label>
+            </div>
+            <div class="form__row">{{ form.numT }}</div>
+        </div>
+        <div class="form__group">
+            <div class="form__row">
+                <label class="form__select">Регион</label>
+            </div>
+            <div class="form__row">{{ form.regionFK }}</div>
+        </div>
+        {% if message.0 != None %}
+             <div class="form__group">
+                <div class="form__select" style="color: {{ message.1 }};">{{ message.0 }}</div>
+            </div>
+        {% endif %}
+        <div class="form__group">
+            <div class="form__row">
+                <input name="btn__edit" type="submit" class="button form__button" value="Редактировать">
+                <input name="btn__delete" type="submit" class="butto#n form__button" value="#Удалить">
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block static_script_jq %}
+    $(function() {
+        $(".form input[type='checkbox']").on('change', function() {
+            if ($('#check__0').prop('checked')) {
+                $(".form__row > input[type='text']").attr('disabled', true);
+                $(".form__row > input[type='number']").attr('disabled', true);
+                $(".form__row > input[type='datetime-local']").attr('disabled', true);
+                $(".form__row > select").attr('disabled', true);
+            } else {
+                $(".form__row > input[type='text']").attr('disabled', false);
+                $(".form__row > input[type='number']").attr('disabled', false);
+                $(".form__row > input[type='datetime-local']").attr('disabled', false);
+                $(".form__row > select").attr('disabled', false);
+            }
+        });
+    });
+{% endblock %}
