@@ -101,17 +101,3 @@ STATIC_URL  = '/static/'
 
 MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 MEDIA_URL   = '/media/'
-
-# TEMPLATE_DIRS = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'templates')
-
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'testdjangos@gmail.com'
-# EMAIL_HOST_PASSWORD = 'testdjango123'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# # send_mail('Django mail', 'This e-mail was sent with Django.',
-# # 'your_account@gmail.com', ['your_account@gmail.com'], fail_silently=False)
-
-# LOGIN_REDIRECT_URL = reverse_lazy('profile')
-# LOGIN_URL = reverse_lazy('login')
-# LOGOUT_URL = reverse_lazy('logout')
